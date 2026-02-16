@@ -92,10 +92,16 @@
             <a href="#calendar" class="hover:text-blue-600 transition">Calendar</a>
         </div>
 
-        <!-- Linked directly to Google Form, No Popup -->
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-PzSBp_N8uilT5QSumQi1bzkAR-OHRBcCt-cA7_fq1euv4Q/viewform" target="_blank" class="bg-slate-900 text-white px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition shadow-xl shadow-slate-200 flex items-center gap-2">
-            Volunteer <i class="fa-solid fa-external-link text-[10px]"></i>
-        </a>
+        <div class="flex items-center gap-3">
+            <!-- New Suggestion Button -->
+            <a href="#" target="_blank" id="suggestTopicBtn" class="hidden sm:flex border border-slate-200 text-slate-600 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-slate-50 transition items-center gap-2">
+                Suggest a Topic
+            </a>
+            <!-- Volunteer Button -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-PzSBp_N8uilT5QSumQi1bzkAR-OHRBcCt-cA7_fq1euv4Q/viewform" target="_blank" class="bg-slate-900 text-white px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition shadow-xl shadow-slate-200 flex items-center gap-2">
+                Volunteer <i class="fa-solid fa-external-link text-[10px]"></i>
+            </a>
+        </div>
     </nav>
 
     <main class="max-w-7xl mx-auto px-4 md:px-8 py-10 space-y-20">
@@ -115,6 +121,9 @@
                 <div class="flex flex-wrap gap-4 pt-4">
                     <a href="#repository" class="bg-blue-600 text-white px-8 py-4 rounded-2xl font-black shadow-2xl shadow-blue-200 hover:bg-blue-700 transition flex items-center gap-3">
                         Enter Repository <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                    <a href="#" target="_blank" id="suggestTopicHero" class="bg-white border border-slate-200 text-slate-900 px-8 py-4 rounded-2xl font-black shadow-sm hover:bg-slate-50 transition flex items-center gap-3">
+                        Suggest a Topic
                     </a>
                 </div>
             </div>
@@ -200,11 +209,16 @@
     </main>
 
     <footer class="bg-slate-900 py-16 text-center text-slate-600 text-[10px] font-black tracking-[0.5em] uppercase">
-        GSR HUB &bull; VERSION 2.9
+        GSR HUB &bull; VERSION 3.0
     </footer>
 
     <script>
-        const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd-PzSBp_N8uilT5QSumQi1bzkAR-OHRBcCt-cA7_fq1euv4Q/viewform";
+        // REPLACE THE # WITH YOUR NEW GOOGLE FORM URL FOR TOPIC SUGGESTIONS
+        const SUGGEST_TOPIC_URL = "#"; 
+        const VOLUNTEER_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd-PzSBp_N8uilT5QSumQi1bzkAR-OHRBcCt-cA7_fq1euv4Q/viewform";
+
+        document.getElementById('suggestTopicBtn').href = SUGGEST_TOPIC_URL;
+        document.getElementById('suggestTopicHero').href = SUGGEST_TOPIC_URL;
 
         let currentMonth = new Date().getMonth();
         let currentYear = new Date().getFullYear();
@@ -229,20 +243,33 @@
 
         function renderRepository() {
             const grid = document.getElementById('repoGrid');
-            if (data.sessions.length === 0) return;
+            if (!data.sessions || data.sessions.length === 0) return;
+            
             grid.innerHTML = data.sessions.map(s => `
                 <div class="premium-card p-8 flex flex-col h-full session-card" data-search="${s.title.toLowerCase()} ${s.speaker.toLowerCase()}">
-                    <div class="flex justify-between items-start mb-8"><span class="text-[9px] font-black text-blue-600 uppercase tracking-[0.2em] bg-blue-50 px-3 py-1 rounded-full">${s.month}</span></div>
-                    <h3 class="text-xl font-extrabold text-slate-900 mb-4 leading-tight">${s.title}</h3>
-                    <p class="text-slate-500 text-sm mb-8 line-clamp-3 font-medium leading-relaxed">${s.summary}</p>
-                    <div class="mt-auto">
-                        <div class="flex items-center gap-3 mb-8">
-                            <div class="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center font-black text-slate-400 text-xs uppercase">${s.speaker.split(',')[0][0]}</div>
-                            <span class="font-bold text-slate-700 text-sm truncate">${s.speaker}</span>
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-[0.2em] bg-blue-50 px-3 py-1 rounded-full">${s.month}</span>
+                    </div>
+                    
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-3 leading-tight">${s.title}</h3>
+                    
+                    <!-- ENHANCED SUMMARY FOR SCANNING -->
+                    <div class="mb-6">
+                        <p class="text-slate-500 text-sm font-medium leading-relaxed line-clamp-4 italic border-l-2 border-slate-100 pl-4">
+                            ${s.summary || "No summary available for this session."}
+                        </p>
+                    </div>
+
+                    <div class="mt-auto pt-6 border-t border-slate-50">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center font-black text-slate-400 text-[10px] uppercase">
+                                ${s.speaker ? s.speaker.charAt(0) : '?'}
+                            </div>
+                            <span class="font-bold text-slate-700 text-xs truncate">${s.speaker}</span>
                         </div>
                         <div class="grid grid-cols-2 gap-3">
-                            <a href="${s.recording}" target="_blank" class="flex items-center justify-center gap-2 bg-slate-900 py-4 rounded-2xl text-[10px] font-black text-white hover:bg-blue-600 transition tracking-widest uppercase italic">Recording</a>
-                            <a href="${s.deck}" target="_blank" class="flex items-center justify-center gap-2 bg-white border border-slate-200 py-4 rounded-2xl text-[10px] font-black text-slate-600 hover:border-blue-600 transition tracking-widest uppercase italic">Deck</a>
+                            <a href="${s.recording}" target="_blank" class="flex items-center justify-center gap-2 bg-slate-900 py-3.5 rounded-xl text-[9px] font-black text-white hover:bg-blue-600 transition tracking-widest uppercase italic">Recording</a>
+                            <a href="${s.deck}" target="_blank" class="flex items-center justify-center gap-2 bg-white border border-slate-200 py-3.5 rounded-xl text-[9px] font-black text-slate-600 hover:border-blue-600 transition tracking-widest uppercase italic">Deck</a>
                         </div>
                     </div>
                 </div>
@@ -272,7 +299,7 @@
                                 <p class="text-[8px] font-black text-white leading-tight uppercase truncate">${ev.title}</p>
                             </div>
                         ` : `
-                            <a href="${GOOGLE_FORM_URL}" target="_blank" class="block p-2.5 bg-emerald-50 border border-emerald-100 rounded-xl cursor-pointer hover:bg-emerald-100 transition text-center animate-pulse">
+                            <a href="${VOLUNTEER_FORM_URL}" target="_blank" class="block p-2.5 bg-emerald-50 border border-emerald-100 rounded-xl cursor-pointer hover:bg-emerald-100 transition text-center animate-pulse">
                                 <p class="text-[8px] font-black text-emerald-700 uppercase">Open</p>
                             </a>
                         `) : ''}
