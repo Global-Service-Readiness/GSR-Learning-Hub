@@ -3,226 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GSR Learning Session Hub</title>
+    <title>Global Service Readiness - Learning Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
         :root { 
-            --primary: #0f172a;
-            --accent: #2563eb;
-            --bg-soft: #f8fafc;
+            --ebay-blue: #0064d2;
+            --ebay-red: #e53238;
+            --ebay-yellow: #f5af02;
+            --ebay-green: #86b817;
+            --bg-soft: #f4f4f4;
         }
 
         body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
+            font-family: 'Inter', sans-serif; 
             background-color: var(--bg-soft);
-            color: var(--primary);
+            color: #333;
             scroll-behavior: smooth; 
         }
 
+        .ebay-border-top { border-top: 6px solid var(--ebay-blue); }
+        
         .glass-nav { 
-            background: rgba(255, 255, 255, 0.9); 
+            background: rgba(255, 255, 255, 0.95); 
             backdrop-filter: blur(12px); 
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            border-bottom: 1px solid #ddd;
         }
 
         .hero-gradient {
-            background: radial-gradient(circle at top right, #eff6ff 0%, #ffffff 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
         }
 
-        .premium-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 2rem;
+        .card-shadow {
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .card-shadow:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        .premium-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-            border-color: #bfdbfe;
+        .quarter-tab {
+            transition: all 0.2s ease;
+            border-bottom: 3px solid transparent;
+        }
+        .quarter-tab.active {
+            border-bottom-color: var(--ebay-blue);
+            color: var(--ebay-blue);
+            font-weight: 800;
         }
 
-        .calendar-day { 
-            min-height: 110px; 
-            background: white;
-            transition: background 0.2s ease;
+        .schedule-line {
+            position: relative;
         }
+        .schedule-line::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #eee;
+        }
+
+        /* Engagement Widgets */
+        .recipe-card { background: #fff9db; border-left: 5px solid var(--ebay-yellow); }
+        .joke-card { background: #f1f3f5; border-left: 5px solid var(--ebay-blue); }
         
-        .calendar-day:hover { background: #f1f5f9; }
-
-        .agenda-item {
-            border-left: 3px solid #e2e8f0;
-            padding-left: 1rem;
-            transition: border-color 0.3s;
-        }
-        .agenda-item:hover {
-            border-left-color: #2563eb;
+        .wordcloud-container {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
         }
 
-        .skeleton {
-            background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
-            background-size: 200% 100%;
-            animation: skeleton-loading 1.5s infinite;
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
-        @keyframes skeleton-loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+        .animate-soft { animation: pulse-soft 3s infinite ease-in-out; }
+
+        .logo-container {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #eee;
         }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Navigation -->
-    <nav class="glass-nav sticky top-0 z-50 px-6 py-4 md:px-12 flex justify-between items-center">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200">
-                <i class="fa-solid fa-graduation-cap text-white text-lg"></i>
+    <nav class="glass-nav sticky top-0 z-50 px-6 py-3 md:px-12 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <!-- Branding: Replace src with image_3efc88.jpg -->
+            <div class="logo-container bg-white flex items-center justify-center">
+                <img src="image_3efc88.jpg" alt="GSR" onerror="this.src='https://ui-avatars.com/api/?name=GSR&background=0064d2&color=fff'" class="object-contain">
             </div>
             <div>
-                <h1 class="font-extrabold text-xl tracking-tighter text-slate-900 leading-none">GSR HUB</h1>
-                <p class="text-[9px] font-bold text-blue-500 uppercase tracking-widest mt-1">Learning Session Hub</p>
+                <h1 class="font-extrabold text-lg tracking-tight text-slate-900 leading-none">Global Service Readiness</h1>
+                <p class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mt-1">Learning Hub</p>
             </div>
         </div>
         
-        <div class="hidden md:flex gap-10 font-bold text-xs text-slate-500 uppercase tracking-widest">
+        <div class="hidden lg:flex gap-8 font-bold text-xs text-slate-500 uppercase tracking-widest">
             <a href="#repository" class="hover:text-blue-600 transition">Repository</a>
-            <a href="#calendar" class="hover:text-blue-600 transition">Calendar</a>
+            <a href="#schedule" class="hover:text-blue-600 transition">Delivery Schedule</a>
+            <a href="#insights" class="hover:text-blue-600 transition">Insights & Fun</a>
         </div>
 
         <div class="flex items-center gap-3">
-            <!-- New Suggestion Button -->
-            <a href="#" target="_blank" id="suggestTopicBtn" class="hidden sm:flex border border-slate-200 text-slate-600 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-slate-50 transition items-center gap-2">
-                Suggest a Topic
+            <a href="https://forms.gle/Qs3uDYf8HKgyAfMs9" target="_blank" class="hidden sm:flex border-2 border-slate-200 text-slate-700 px-5 py-2 rounded-full text-xs font-bold hover:bg-slate-50 transition items-center gap-2">
+                Suggest Topic
             </a>
-            <!-- Volunteer Button -->
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-PzSBp_N8uilT5QSumQi1bzkAR-OHRBcCt-cA7_fq1euv4Q/viewform" target="_blank" class="bg-slate-900 text-white px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition shadow-xl shadow-slate-200 flex items-center gap-2">
-                Volunteer <i class="fa-solid fa-external-link text-[10px]"></i>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-PzSBp_N8uilT5QSumQi1bzkAR-OHRBcCt-cA7_fq1euv4Q/viewform" target="_blank" class="bg-[#0064d2] text-white px-6 py-2.5 rounded-full text-xs font-bold hover:bg-blue-700 transition shadow-lg flex items-center gap-2">
+                Volunteer <i class="fa-solid fa-microphone text-[10px]"></i>
             </a>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-4 md:px-8 py-10 space-y-20">
+    <main class="max-w-7xl mx-auto px-4 md:px-8 py-8 space-y-16">
         
         <!-- Hero Section -->
-        <section class="hero-gradient rounded-[2.5rem] p-10 md:p-16 border border-slate-200 flex flex-col lg:flex-row items-center gap-12 relative overflow-hidden">
-            <div class="flex-1 space-y-6">
-                <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
-                    Service Readiness Central
+        <section class="hero-gradient rounded-[2.5rem] p-8 md:p-12 border border-slate-200 flex flex-col lg:flex-row items-stretch gap-8 relative overflow-hidden ebay-border-top shadow-xl">
+            <div class="flex-1 space-y-6 py-4">
+                <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                    Live Portal
                 </div>
-                <h2 class="text-5xl md:text-6xl font-black text-slate-900 leading-[1.1] tracking-tight">
-                    Unified GSR <br><span class="text-blue-600">Learning Insights</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+                    Global Service Readiness <br><span class="text-[#0064d2] underline decoration-[#f5af02] underline-offset-8 text-3xl md:text-4xl italic font-medium">Learning Hub</span>
                 </h2>
-                <p class="text-slate-500 text-lg md:text-xl leading-relaxed max-w-2xl font-medium">
-                    The central repository for Readiness recordings, technical decks, and our global monthly delivery schedule.
+                <p class="text-slate-600 text-lg md:text-xl leading-relaxed max-w-2xl font-medium">
+                    The central repository for Service Readiness learning session recordings, resources / decks, and our global monthly delivery schedule.
                 </p>
                 <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="#repository" class="bg-blue-600 text-white px-8 py-4 rounded-2xl font-black shadow-2xl shadow-blue-200 hover:bg-blue-700 transition flex items-center gap-3">
-                        Enter Repository <i class="fa-solid fa-chevron-right text-xs"></i>
+                    <a href="#repository" class="bg-[#0064d2] text-white px-8 py-4 rounded-xl font-bold hover:shadow-lg transition-all flex items-center gap-3">
+                        Enter Repository <i class="fa-solid fa-folder-open"></i>
                     </a>
-                    <a href="#" target="_blank" id="suggestTopicHero" class="bg-white border border-slate-200 text-slate-900 px-8 py-4 rounded-2xl font-black shadow-sm hover:bg-slate-50 transition flex items-center gap-3">
-                        Suggest a Topic
+                    <a href="https://forms.gle/Qs3uDYf8HKgyAfMs9" target="_blank" class="bg-white border-2 border-slate-200 text-slate-900 px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition flex items-center gap-3">
+                        Submit an Idea
                     </a>
                 </div>
             </div>
 
-            <!-- Spotlight Card: Feb 27 Agenda -->
-            <div class="w-full lg:w-[420px] bg-white rounded-3xl p-8 shadow-2xl shadow-slate-200 border border-slate-100 relative">
-                <div class="flex justify-between items-center mb-6 border-b border-slate-50 pb-4">
-                    <div>
-                        <p class="text-[10px] font-black text-blue-500 uppercase tracking-[0.2em]">Feb Session Agenda</p>
-                        <p class="text-xs font-bold text-slate-400 mt-1">Host: Emma Dolan</p>
+            <!-- Fun Engagement Box (Landing Page Prominence) -->
+            <div class="w-full lg:w-[380px] space-y-4">
+                <div class="recipe-card p-6 rounded-3xl shadow-sm animate-soft">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fa-solid fa-utensils text-[#f5af02]"></i>
+                        <h4 class="font-black text-sm uppercase tracking-tighter">Community Recipe</h4>
                     </div>
-                    <span class="text-[10px] font-bold text-white bg-blue-600 px-3 py-1 rounded-full animate-pulse tracking-widest uppercase">Feb 27</span>
+                    <p class="text-xs font-bold text-slate-700 mb-2">Marianna's January Special:</p>
+                    <p class="text-sm italic text-slate-600 mb-4">"The Best Lasagna alla Bolognese shared during the Jan Learning Session."</p>
+                    <a href="#" class="text-xs font-black text-[#0064d2] uppercase hover:underline">Get Recipe Details →</a>
                 </div>
-                
-                <div class="space-y-6">
-                    <div class="agenda-item">
-                        <div class="flex justify-between items-start">
-                            <h4 class="font-bold text-slate-900 text-sm">Dan Todd</h4>
-                            <span class="text-[9px] font-black text-slate-300 uppercase">25m</span>
-                        </div>
-                        <p class="text-xs text-slate-500 font-medium leading-relaxed">GitHub + AI Usage Discussion: Leading as GSR.</p>
-                    </div>
 
-                    <div class="agenda-item">
-                        <div class="flex justify-between items-start">
-                            <h4 class="font-bold text-slate-900 text-sm">Richard Hennessey</h4>
-                            <span class="text-[9px] font-black text-slate-300 uppercase">20m</span>
-                        </div>
-                        <p class="text-xs text-slate-500 font-medium leading-relaxed">Low Complexity SOP Overview.</p>
+                <div class="joke-card p-6 rounded-3xl shadow-sm">
+                    <div class="flex items-center gap-3 mb-2">
+                        <i class="fa-solid fa-face-smile text-[#0064d2]"></i>
+                        <h4 class="font-black text-sm uppercase tracking-tighter">Session Joke</h4>
                     </div>
+                    <p class="text-sm font-medium text-slate-700 italic">"Why did the JIRA ticket go to the doctor? It had too many issues!"</p>
+                </div>
+            </div>
+        </section>
 
-                    <div class="agenda-item">
-                        <div class="flex justify-between items-start">
-                            <h4 class="font-bold text-slate-900 text-sm">Belen Delgado</h4>
-                            <span class="text-[9px] font-black text-slate-300 uppercase">10m</span>
-                        </div>
-                        <p class="text-xs text-slate-500 font-medium leading-relaxed">GSR Mentoring Plan Launch.</p>
+        <!-- Delivery Schedule (New Compact List View) -->
+        <section id="schedule" class="space-y-8 bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-6 border-b border-slate-100 pb-8">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-slate-900">Upcoming Delivery Schedule</h2>
+                    <p class="text-slate-500 font-medium">Clear your calendar for these global syncs.</p>
+                </div>
+                <div class="flex gap-2">
+                    <span class="bg-[#86b817] text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest">Updated Today</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
+                <!-- Feb 27 -->
+                <div class="flex gap-6 items-start p-6 rounded-2xl bg-blue-50/50 border border-blue-100">
+                    <div class="text-center">
+                        <p class="text-[10px] font-black text-blue-600 uppercase">Feb</p>
+                        <p class="text-3xl font-black text-slate-900">27</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900">Emma Dolan (Host)</h4>
+                        <p class="text-xs text-slate-500 mt-1 italic">Dan, Richard & Belen presenting</p>
+                        <span class="inline-block mt-3 text-[9px] bg-blue-600 text-white px-2 py-0.5 rounded font-bold uppercase">Locked</span>
+                    </div>
+                </div>
+                <!-- Mar 27 -->
+                <div class="flex gap-6 items-start p-6 rounded-2xl border border-slate-100">
+                    <div class="text-center">
+                        <p class="text-[10px] font-black text-slate-400 uppercase">Mar</p>
+                        <p class="text-3xl font-black text-slate-300">27</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900">TBD (Open Slot)</h4>
+                        <p class="text-xs text-slate-500 mt-1 italic">Agenda being finalized</p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-PzSBp_N8uilT5QSumQi1bzkAR-OHRBcCt-cA7_fq1euv4Q/viewform" target="_blank" class="inline-block mt-3 text-[9px] bg-[#86b817] text-white px-2 py-0.5 rounded font-bold uppercase animate-pulse">Volunteer Now</a>
+                    </div>
+                </div>
+                <!-- Apr 24 -->
+                <div class="flex gap-6 items-start p-6 rounded-2xl border border-slate-100">
+                    <div class="text-center">
+                        <p class="text-[10px] font-black text-slate-400 uppercase">Apr</p>
+                        <p class="text-3xl font-black text-slate-300">24</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900">TBD (Open Slot)</h4>
+                        <p class="text-xs text-slate-500 mt-1 italic">Early sign-ups welcome</p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-PzSBp_N8uilT5QSumQi1bzkAR-OHRBcCt-cA7_fq1euv4Q/viewform" target="_blank" class="inline-block mt-3 text-[9px] bg-slate-200 text-slate-600 px-2 py-0.5 rounded font-bold uppercase">Open</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Search & Repository -->
+        <!-- Repository (Expandable by Quarter) -->
         <section id="repository" class="space-y-10">
             <div class="flex flex-col md:flex-row justify-between items-end gap-6">
                 <div>
-                    <h2 class="text-3xl font-black text-slate-900">Learning Repository</h2>
-                    <p class="text-slate-500 font-medium">Search past sessions, speakers, and resources.</p>
+                    <h2 class="text-3xl font-black text-slate-900 text-slate-900">Learning Repository</h2>
+                    <p class="text-slate-500 font-medium">Browse sessions by business quarter.</p>
                 </div>
-                <div class="relative w-full md:w-96 group">
-                    <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 transition-colors group-focus-within:text-blue-600"></i>
-                    <input type="text" id="searchInput" placeholder="Search resources..." class="w-full pl-14 pr-6 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:border-blue-500 transition-all shadow-sm bg-white font-medium">
+                <div class="relative w-full md:w-80">
+                    <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-300"></i>
+                    <input type="text" id="searchInput" placeholder="Search sessions..." class="w-full pl-12 pr-6 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all shadow-sm font-medium">
                 </div>
+            </div>
+
+            <div class="flex gap-4 border-b border-slate-200 mb-8 overflow-x-auto pb-2">
+                <button onclick="filterQuarter('Q1')" id="tab-Q1" class="quarter-tab px-6 py-3 text-sm font-bold uppercase active">Q1 (Jan-Mar)</button>
+                <button onclick="filterQuarter('Q2')" id="tab-Q2" class="quarter-tab px-6 py-3 text-sm font-bold uppercase">Q2 (Apr-Jun)</button>
+                <button onclick="filterQuarter('Q3')" id="tab-Q3" class="quarter-tab px-6 py-3 text-sm font-bold uppercase">Q3 (Jul-Sep)</button>
+                <button onclick="filterQuarter('Q4')" id="tab-Q4" class="quarter-tab px-6 py-3 text-sm font-bold uppercase text-slate-300">Q4 (Oct-Dec)</button>
             </div>
 
             <div id="repoGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="premium-card p-8 h-80 skeleton"></div>
-                <div class="premium-card p-8 h-80 skeleton"></div>
-                <div class="premium-card p-8 h-80 skeleton"></div>
+                <!-- Session cards injected via JS -->
             </div>
         </section>
 
-        <!-- Calendar Section -->
-        <section id="calendar" class="space-y-8 pb-10">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div>
-                    <h2 class="text-3xl font-black text-slate-900">Live Calendar</h2>
-                    <p class="text-slate-500 font-medium">Stay updated on future delivery slots.</p>
-                </div>
-                <div class="flex items-center gap-2 bg-white border border-slate-200 rounded-2xl p-1.5 shadow-sm">
-                    <button onclick="changeMonth(-1)" class="w-10 h-10 flex items-center justify-center hover:bg-slate-50 rounded-xl transition text-slate-400 hover:text-blue-600"><i class="fa-solid fa-chevron-left"></i></button>
-                    <span id="calendarTitle" class="font-bold px-4 text-slate-700 min-w-[140px] text-center text-sm uppercase tracking-widest"></span>
-                    <button onclick="changeMonth(1)" class="w-10 h-10 flex items-center justify-center hover:bg-slate-50 rounded-xl transition text-slate-400 hover:text-blue-600"><i class="fa-solid fa-chevron-right"></i></button>
+        <!-- Insights & Engagement (Vibrant Section) -->
+        <section id="insights" class="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-8">
+            <div class="wordcloud-container card-shadow border border-slate-100 flex flex-col justify-center">
+                <h3 class="text-xl font-black text-slate-900 mb-8 uppercase tracking-tighter">2025-2026 Feedback WordCloud</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="text-4xl font-black text-[#0064d2]">Readiness</span>
+                    <span class="text-2xl font-bold text-[#e53238]">Strategic</span>
+                    <span class="text-5xl font-extrabold text-[#86b817]">AI Usage</span>
+                    <span class="text-xl font-medium text-slate-400">Governance</span>
+                    <span class="text-3xl font-bold text-[#f5af02]">Expertise</span>
+                    <span class="text-2xl font-bold text-slate-600">Unified</span>
+                    <span class="text-xl text-slate-300">Efficiency</span>
                 </div>
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-[2rem] overflow-hidden shadow-xl shadow-slate-100">
-                <div class="grid grid-cols-7 border-b border-slate-100 bg-slate-50/50" id="calendarHeaders"></div>
-                <div id="calendarGrid" class="grid grid-cols-7 divide-x divide-y divide-slate-100"></div>
+            <div class="bg-[#0064d2] text-white p-10 rounded-[2.5rem] card-shadow space-y-6">
+                <h3 class="text-2xl font-black uppercase tracking-tighter flex items-center gap-3">
+                    <i class="fa-solid fa-chart-line text-[#86b817]"></i> Survey Insights
+                </h3>
+                <div class="space-y-6">
+                    <div class="bg-white/10 p-5 rounded-2xl border border-white/20">
+                        <p class="text-xs font-bold uppercase opacity-60 mb-2">Confidence Level</p>
+                        <div class="flex items-center gap-4">
+                            <p class="text-4xl font-black">94%</p>
+                            <p class="text-sm font-medium">Team members feel more equipped for 2026 initiatives.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 p-5 rounded-2xl border border-white/20">
+                        <p class="text-xs font-bold uppercase opacity-60 mb-2">Content Satisfaction</p>
+                        <div class="flex items-center gap-4">
+                            <p class="text-4xl font-black">4.8/5</p>
+                            <p class="text-sm font-medium">Average rating for technical deck clarity.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-slate-900 py-16 text-center text-slate-600 text-[10px] font-black tracking-[0.5em] uppercase">
-        GSR HUB &bull; VERSION 3.0
+    <footer class="bg-white py-12 mt-20 border-t border-slate-200 text-center">
+        <p class="text-slate-400 text-xs font-bold uppercase tracking-[0.5em]">Global Service Readiness &bull; 2026 Hub v4.0</p>
     </footer>
 
     <script>
-        // REPLACE THE # WITH YOUR NEW GOOGLE FORM URL FOR TOPIC SUGGESTIONS
-        const SUGGEST_TOPIC_URL = "#"; 
-        const VOLUNTEER_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd-PzSBp_N8uilT5QSumQi1bzkAR-OHRBcCt-cA7_fq1euv4Q/viewform";
-
-        document.getElementById('suggestTopicBtn').href = SUGGEST_TOPIC_URL;
-        document.getElementById('suggestTopicHero').href = SUGGEST_TOPIC_URL;
-
-        let currentMonth = new Date().getMonth();
-        let currentYear = new Date().getFullYear();
-        let data = { sessions: [], events: {} };
+        let data = { sessions: [] };
+        let activeQuarter = 'Q1';
 
         async function loadData() {
             try {
@@ -231,86 +303,70 @@
                     data = await response.json();
                 }
             } catch (e) {
-                console.warn("Load failed, using default structure.");
+                console.warn("Load failed, using mock data.");
+                data = {
+                    sessions: [
+                        { month: "Feb 2026", title: "AI Usage Leadership", speaker: "Dan Todd (Engineering)", summary: "GitHub + AI Leadership discussion outcomes.", recording: "#", deck: "#", quarter: "Q1" },
+                        { month: "Jan 2026", title: "Strategic Retrospective", speaker: "Lee Reddin (Strategy)", summary: "Insights from the 2025 survey results.", recording: "#", deck: "#", quarter: "Q1" }
+                    ]
+                };
             }
-            init();
+            renderRepository();
         }
 
-        function init() {
+        function filterQuarter(q) {
+            activeQuarter = q;
+            document.querySelectorAll('.quarter-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('tab-' + q).classList.add('active');
             renderRepository();
-            renderCalendar();
         }
 
         function renderRepository() {
             const grid = document.getElementById('repoGrid');
-            if (!data.sessions || data.sessions.length === 0) return;
+            const search = document.getElementById('searchInput').value.toLowerCase();
             
-            grid.innerHTML = data.sessions.map(s => `
-                <div class="premium-card p-8 flex flex-col h-full session-card" data-search="${s.title.toLowerCase()} ${s.speaker.toLowerCase()}">
+            const filtered = data.sessions.filter(s => 
+                s.quarter === activeQuarter && 
+                (s.title.toLowerCase().includes(search) || s.speaker.toLowerCase().includes(search))
+            );
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full py-20 text-center font-bold text-slate-300 italic">No sessions logged for ${activeQuarter} yet.</div>`;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(s => `
+                <div class="premium-card p-8 flex flex-col h-full card-shadow session-card border-t-4" style="border-top-color: var(--ebay-blue)">
                     <div class="flex justify-between items-start mb-6">
-                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-[0.2em] bg-blue-50 px-3 py-1 rounded-full">${s.month}</span>
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">${s.month}</span>
+                        <span class="text-[9px] font-bold text-slate-300 uppercase">${s.quarter}</span>
                     </div>
                     
                     <h3 class="text-xl font-extrabold text-slate-900 mb-3 leading-tight">${s.title}</h3>
                     
-                    <!-- ENHANCED SUMMARY FOR SCANNING -->
                     <div class="mb-6">
-                        <p class="text-slate-500 text-sm font-medium leading-relaxed line-clamp-4 italic border-l-2 border-slate-100 pl-4">
-                            ${s.summary || "No summary available for this session."}
+                        <p class="text-slate-500 text-sm font-medium leading-relaxed italic border-l-2 border-slate-100 pl-4">
+                            ${s.summary}
                         </p>
                     </div>
 
                     <div class="mt-auto pt-6 border-t border-slate-50">
                         <div class="flex items-center gap-3 mb-6">
-                            <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center font-black text-slate-400 text-[10px] uppercase">
+                            <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center font-black text-[#0064d2] text-[10px]">
                                 ${s.speaker ? s.speaker.charAt(0) : '?'}
                             </div>
                             <span class="font-bold text-slate-700 text-xs truncate">${s.speaker}</span>
                         </div>
                         <div class="grid grid-cols-2 gap-3">
-                            <a href="${s.recording}" target="_blank" class="flex items-center justify-center gap-2 bg-slate-900 py-3.5 rounded-xl text-[9px] font-black text-white hover:bg-blue-600 transition tracking-widest uppercase italic">Recording</a>
-                            <a href="${s.deck}" target="_blank" class="flex items-center justify-center gap-2 bg-white border border-slate-200 py-3.5 rounded-xl text-[9px] font-black text-slate-600 hover:border-blue-600 transition tracking-widest uppercase italic">Deck</a>
+                            <a href="${s.recording}" target="_blank" class="flex items-center justify-center gap-2 bg-slate-900 py-3.5 rounded-xl text-[9px] font-black text-white hover:bg-[#0064d2] transition tracking-widest uppercase italic">Recording</a>
+                            <a href="${s.deck}" target="_blank" class="flex items-center justify-center gap-2 bg-white border border-slate-200 py-3.5 rounded-xl text-[9px] font-black text-slate-600 hover:border-[#0064d2] transition tracking-widest uppercase italic">Deck</a>
                         </div>
                     </div>
                 </div>
             `).join('');
         }
 
-        function renderCalendar() {
-            const grid = document.getElementById('calendarGrid');
-            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            document.getElementById('calendarTitle').innerText = `${months[currentMonth]} ${currentYear}`;
-            grid.innerHTML = '';
-            document.getElementById('calendarHeaders').innerHTML = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(h => `<div class="p-4 text-center text-[9px] font-black text-slate-400 uppercase tracking-widest">${h}</div>`).join('');
-            
-            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-            
-            for (let i = 0; i < firstDay; i++) grid.innerHTML += `<div class="calendar-day bg-slate-50/20"></div>`;
-            
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                const ev = data.events[dateKey];
-                grid.innerHTML += `
-                    <div class="calendar-day p-4 border-r border-b border-slate-100 relative">
-                        <div class="text-[10px] font-black text-slate-300 mb-2">${day}</div>
-                        ${ev ? (ev.type === 'booked' ? `
-                            <div class="p-2.5 bg-blue-600 rounded-xl shadow-lg shadow-blue-100">
-                                <p class="text-[8px] font-black text-white leading-tight uppercase truncate">${ev.title}</p>
-                            </div>
-                        ` : `
-                            <a href="${VOLUNTEER_FORM_URL}" target="_blank" class="block p-2.5 bg-emerald-50 border border-emerald-100 rounded-xl cursor-pointer hover:bg-emerald-100 transition text-center animate-pulse">
-                                <p class="text-[8px] font-black text-emerald-700 uppercase">Open</p>
-                            </a>
-                        `) : ''}
-                    </div>
-                `;
-            }
-        }
-
-        function changeMonth(dir) { currentMonth += dir; if (currentMonth > 11) { currentMonth = 0; currentYear++; } else if (currentMonth < 0) { currentMonth = 11; currentYear--; } renderCalendar(); }
-        
-        document.getElementById('searchInput').addEventListener('input', (e) => { const q = e.target.value.toLowerCase(); document.querySelectorAll('.session-card').forEach(c => { c.style.display = c.dataset.search.includes(q) ? 'flex' : 'none'; }); });
+        document.getElementById('searchInput').addEventListener('input', renderRepository);
         loadData();
     </script>
 </body>
