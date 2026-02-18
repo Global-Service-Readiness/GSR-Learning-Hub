@@ -1,40 +1,42 @@
 {
   "sessions": [
     {
-      "month": "February 2026",
+      "month": "Feb 2026",
+      "quarter": "Q1",
       "title": "AI Usage Leadership & SOP Excellence",
-      "speaker": "Dan Todd, Richard Hennessey, Belen Delgado",
-      "summary": "February session hosted by Emma Dolan. Discussion on AI Usage leadership as GSR leaders, review of Low Complexity SOPs, and the launch of the GSR Mentoring Plan.",
+      "speaker": "Dan Todd (Eng), Richard Hennessey (SOP), Belen Delgado (Mentoring)",
+      "summary": "February session hosted by Emma Dolan. Discussion on AI Usage leadership within GSR, review of Low Complexity SOPs, and the launch of the GSR Mentoring Plan.",
       "recording": "https://drive.google.com/drive/folders/1Pivc2jr038QVymG6xY4OKjydOoNImG1b",
       "deck": "https://drive.google.com/drive/folders/1Pivc2jr038QVymG6xY4OKjydOoNImG1b"
     },
     {
-      "month": "January 2026",
+      "month": "Jan 2026",
+      "quarter": "Q1",
       "title": "2026 Initiatives & JIRA Infrastructure",
-      "speaker": "Lee Reddin & Marco Tramacere",
-      "summary": "January session hosted by Annina Krawzik. Strategic GCX Initiatives for 2026, major JIRA infrastructure updates, and a survey retrospective of 2025.",
+      "speaker": "Lee Reddin (Strategy) & Marco Tramacere (JIRA)",
+      "summary": "January session hosted by Annina Krawzik. Deep dive into GCX Strategic Initiatives for 2026, major JIRA infrastructure updates, and a retrospective survey of 2025.",
       "recording": "https://drive.google.com/drive/folders/1S2MzD-2oMY4Q1siDoOixjxtS_Nl0Jg1T",
       "deck": "https://drive.google.com/drive/folders/1S2MzD-2oMY4Q1siDoOixjxtS_Nl0Jg1T"
     }
   ],
   "events": {
-    "2026-01-08": {
-      "title": "Jan Session",
-      "speaker": "Annina Krawzik",
-      "type": "booked"
-    },
     "2026-02-27": {
       "title": "Feb Session",
-      "speaker": "Emma Dolan",
+      "speaker": "Emma Dolan (Host)",
       "type": "booked"
     },
     "2026-03-27": {
       "title": "March Slot",
       "type": "available"
     },
-    "2026-04-09": {
+    "2026-04-24": {
       "title": "April Slot",
       "type": "available"
+    },
+    "2026-01-08": {
+      "title": "Jan Session",
+      "speaker": "Annina Krawzik (Host)",
+      "type": "booked"
     }
   }
 }
