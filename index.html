@@ -29,10 +29,13 @@
             background: linear-gradient(to right, var(--ebay-blue), var(--ebay-red), var(--ebay-yellow), var(--ebay-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
+            padding-right: 0.25em; /* Prevents the letter 'B' from being cut off in Hub */
+            padding-bottom: 0.1em;
         }
         
         .glass-nav { 
-            background: rgba(255, 255, 255, 0.9); 
+            background: rgba(255, 255, 255, 0.95); 
             backdrop-filter: blur(15px); 
             border-bottom: 1px solid rgba(0, 100, 210, 0.1);
         }
@@ -67,8 +70,9 @@
         }
 
         .logo-container {
-            width: 56px; height: 56px; border-radius: 18px; background: white; padding: 4px; box-shadow: 0 4px 10px rgba(0, 100, 210, 0.1);
+            width: 60px; height: 60px; border-radius: 50%; background: white; padding: 2px; box-shadow: 0 4px 10px rgba(0, 100, 210, 0.1);
             transition: transform 0.3s; display: flex; align-items: center; justify-content: center; overflow: hidden;
+            border: 2px solid #eee;
         }
         .logo-container img { width: 100%; height: 100%; object-fit: contain; }
         .logo-container:hover { transform: scale(1.1) rotate(5deg); }
@@ -80,14 +84,19 @@
         .stat-ring::after { content: ''; width: 64px; height: 64px; background: white; border-radius: 50%; position: absolute; }
         .stat-ring span { position: relative; z-index: 1; font-weight: 900; color: #1e293b; }
 
-        .snapshot-card { background: white; border-radius: 1.5rem; border: 1px solid #e2e8f0; transition: all 0.3s; }
+        .snapshot-card { background: white; border-radius: 1.5rem; border: 1px solid #e2e8f0; transition: all 0.3s; height: 100%; }
         .snapshot-card:hover { transform: scale(1.02); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); }
 
-        .agenda-item { border-left: 3px solid #e2e8f0; padding-left: 1rem; transition: border-color 0.3s; margin-bottom: 1.5rem; }
+        .agenda-item { border-left: 4px solid #e2e8f0; padding-left: 1.25rem; transition: border-color 0.3s; margin-bottom: 1.5rem; }
         .agenda-item:hover { border-left-color: var(--ebay-blue); }
 
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .hero-heading {
+            line-height: 1.2;
+            padding-bottom: 5px;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -95,11 +104,11 @@
     <!-- Navigation -->
     <nav class="glass-nav sticky top-0 z-50 px-6 py-4 md:px-12 flex justify-between items-center">
         <div class="flex items-center gap-5">
+            <!-- Branding: Logo from image_3efc88.jpg -->
             <div class="logo-container">
-                <!-- Branding: GSR Logo replaces initials -->
-                <img src="image_3efc88.jpg" alt="GSR Logo" onerror="this.src='https://ui-avatars.com/api/?name=GSR&background=0064d2&color=fff'">
+                <img src="image_3efc88.jpg" alt="Global Service Readiness Logo" onerror="this.src='https://ui-avatars.com/api/?name=GSR&background=0064d2&color=fff'">
             </div>
-            <div>
+            <div class="hidden sm:block">
                 <h1 class="font-black text-xl tracking-tighter text-slate-900 leading-none">Global Service Readiness - Learning Hub</h1>
                 <p class="text-[10px] font-black text-[#0064d2] uppercase tracking-[0.2em] mt-1">Unified Insights & Expertise</p>
             </div>
@@ -126,22 +135,22 @@
         
         <!-- Hero Section -->
         <section class="hero-mesh rounded-[3rem] p-10 md:p-16 border border-slate-200 flex flex-col lg:flex-row items-center gap-16 relative overflow-hidden shadow-2xl">
-            <div class="flex-1 space-y-8 py-4">
+            <div class="flex-1 space-y-8 py-4 text-center lg:text-left">
                 <div class="inline-flex items-center gap-3 bg-white/80 backdrop-blur px-5 py-2 rounded-full border border-blue-100 shadow-sm">
                     <span class="w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
                     <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest">2026 Engagement Portal</span>
                 </div>
                 
-                <h2 class="text-5xl md:text-7xl font-black text-slate-900 leading-[1.05] tracking-tighter">
+                <h2 class="hero-heading text-5xl md:text-7xl font-black text-slate-900 tracking-tighter">
                     Global Service <br> Readiness <br>
                     <span class="ebay-gradient-text italic font-medium">Learning Hub</span>
                 </h2>
                 
-                <p class="text-slate-600 text-xl md:text-2xl leading-relaxed max-w-2xl font-medium">
+                <p class="text-slate-600 text-xl md:text-2xl leading-relaxed max-w-2xl font-medium mx-auto lg:mx-0">
                     The central repository for Service Readiness learning session recordings, resources / decks, and our global monthly delivery schedule.
                 </p>
                 
-                <div class="flex flex-wrap gap-5 pt-6">
+                <div class="flex flex-wrap justify-center lg:justify-start gap-5 pt-6">
                     <a href="#repository" class="bg-[#0064d2] text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-105 hover:shadow-2xl transition-all flex items-center gap-4">
                         Enter Repository <i class="fa-solid fa-folder-open"></i>
                     </a>
@@ -151,7 +160,7 @@
                 </div>
             </div>
 
-            <!-- Spotlight Card: Feb 27 Agenda -->
+            <!-- Spotlight Card -->
             <div class="w-full lg:w-[420px] bg-white rounded-[2.5rem] p-10 shadow-2xl border border-slate-100 relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1.5 bg-[#0064d2]"></div>
                 <div class="flex justify-between items-center mb-8 pb-4 border-b border-slate-50">
@@ -162,22 +171,22 @@
                     <span class="text-[10px] font-bold text-white bg-[#0064d2] px-3 py-1 rounded-full animate-pulse uppercase">Feb 27</span>
                 </div>
                 
-                <div class="space-y-2">
+                <div class="space-y-4">
                     <div class="agenda-item">
                         <h4 class="font-bold text-slate-900 text-sm">Dan Todd</h4>
-                        <p class="text-[9px] font-black text-blue-500 uppercase tracking-wider mt-0.5 mb-1 text-nowrap">(Senior Manager GCX Research & Innovation)</p>
+                        <p class="text-[9px] font-black text-blue-500 uppercase tracking-wider mt-0.5 mb-1 leading-tight">(Senior Manager GCX Research & Innovation)</p>
                         <p class="text-xs text-slate-500 font-medium leading-relaxed">GitHub + AI Usage Discussion: Leading as GSR.</p>
                     </div>
 
                     <div class="agenda-item">
                         <h4 class="font-bold text-slate-900 text-sm">Richard Hennessey</h4>
-                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-wider mt-0.5 mb-1">(GSR Strategy & Operations)</p>
+                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-wider mt-0.5 mb-1 leading-tight">(GSR Strategy & Operations)</p>
                         <p class="text-xs text-slate-500 font-medium leading-relaxed">Low Complexity SOP Overview & Feedback Loop.</p>
                     </div>
 
                     <div class="agenda-item">
                         <h4 class="font-bold text-slate-900 text-sm">Belen Delgado</h4>
-                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-wider mt-0.5 mb-1">(GSR Mentoring Lead)</p>
+                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-wider mt-0.5 mb-1 leading-tight">(GSR Mentoring Lead)</p>
                         <p class="text-xs text-slate-500 font-medium leading-relaxed">GSR Mentoring Plan Launch: Building our Future.</p>
                     </div>
                 </div>
@@ -188,10 +197,10 @@
         <section id="snapshots" class="space-y-12">
             <div class="text-center space-y-4 max-w-3xl mx-auto">
                 <h2 class="text-4xl font-black text-slate-900 uppercase tracking-tighter">2025 Knowledge Snapshot</h2>
-                <p class="text-slate-500 font-medium text-lg italic">"A recap of the core pillars and experts who shaped our learning in 2025."</p>
+                <p class="text-slate-500 font-medium text-lg italic">"A look back at the core pillars and experts who shaped our learning in 2025."</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
                 <!-- Comms Pillar -->
                 <div class="snapshot-card p-10 border-t-8 border-[#e53238]">
                     <div class="flex items-center gap-4 mb-8">
@@ -271,7 +280,7 @@
                 <p class="text-sm font-medium text-slate-700 italic leading-relaxed">
                     "Why did the JIRA ticket cross the road? To get assigned to someone else!"
                 </p>
-                <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-6">&mdash; Shared by Tony</p>
+                <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-6 text-right">&mdash; Shared by Tony</p>
             </div>
 
             <div class="bg-white p-8 rounded-3xl shadow-sm border-2 border-slate-50 flex flex-col justify-center text-center">
@@ -290,7 +299,7 @@
                         <span class="text-3xl font-black leading-none">27</span>
                     </div>
                     <div>
-                        <h4 class="font-black text-slate-900 leading-tight text-nowrap">Feb Session</h4>
+                        <h4 class="font-black text-slate-900 leading-tight">Feb Session</h4>
                         <p class="text-xs text-slate-400 font-bold uppercase mt-1">Emma Dolan (Host)</p>
                     </div>
                 </div>
