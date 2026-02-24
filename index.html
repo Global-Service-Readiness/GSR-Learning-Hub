@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Service Readiness - Learning Hub</title>
+    <title>GSR Learning Hub - Unified Insights & Expertise</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -22,17 +22,15 @@
             background-color: var(--bg-soft);
             color: #1e293b;
             scroll-behavior: smooth; 
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230064d2' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
-        /* FIX: Robust padding and visible overflow to prevent the 'B' in Hub from cutting off */
+        /* FIX: Robust fix for italic gradient text clipping (descenders and the letter 'B') */
         .ebay-gradient-text {
             background: linear-gradient(to right, var(--ebay-blue), var(--ebay-red), var(--ebay-yellow), var(--ebay-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
-            padding-right: 1.2em; 
-            margin-right: -1.0em;
+            padding-right: 0.6em; 
             padding-bottom: 0.1em;
             font-style: italic;
             overflow: visible !important;
@@ -47,90 +45,62 @@
         .hero-mesh {
             background-color: #ffffff;
             background-image: 
-                radial-gradient(at 0% 0%, rgba(0, 100, 210, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(134, 184, 23, 0.1) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(245, 175, 2, 0.1) 0px, transparent 50%),
-                radial-gradient(at 0% 100%, rgba(229, 50, 56, 0.1) 0px, transparent 50%);
+                radial-gradient(at 0% 0%, rgba(0, 100, 210, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(134, 184, 23, 0.08) 0px, transparent 50%);
         }
 
-        .card-glow-blue:hover { box-shadow: 0 10px 30px -10px rgba(0, 100, 210, 0.4); transform: translateY(-8px); border-color: var(--ebay-blue); }
-        .card-glow-red:hover { box-shadow: 0 10px 30px -10px rgba(229, 50, 56, 0.3); transform: translateY(-8px); border-color: var(--ebay-red); }
-        .card-glow-yellow:hover { box-shadow: 0 10px 30px -10px rgba(245, 175, 2, 0.3); transform: translateY(-8px); border-color: var(--ebay-yellow); }
-        .card-glow-green:hover { box-shadow: 0 10px 30px -10px rgba(134, 184, 23, 0.3); transform: translateY(-8px); border-color: var(--ebay-green); }
+        .pillar-tab { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        .pillar-tab.active { background: var(--ebay-blue); color: white; border-color: var(--ebay-blue); box-shadow: 0 10px 15px -3px rgba(0, 100, 210, 0.2); }
 
-        .sticky-note { transition: all 0.3s ease; box-shadow: 2px 5px 15px rgba(0,0,0,0.05); }
-        .sticky-note:nth-child(even) { transform: rotate(1.5deg); }
-        .sticky-note:nth-child(odd) { transform: rotate(-1.5deg); }
-        .sticky-note:hover { transform: rotate(0deg) scale(1.05); z-index: 10; box-shadow: 5px 10px 25px rgba(0,0,0,0.1); }
-
-        .recipe-yellow { background: #fffde7; border-top: 5px solid var(--ebay-yellow); }
-        .joke-blue { background: #e3f2fd; border-top: 5px solid var(--ebay-blue); }
-
-        .quarter-tab { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }
-        .quarter-tab.active::after {
-            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 40%; height: 4px; background: var(--ebay-blue); border-radius: 10px;
-        }
-
-        /* LOGO BOX FIX: Simplified and ensured dimensions */
         .logo-container {
-            width: 60px; height: 60px; border-radius: 50%; background: white; padding: 0; box-shadow: 0 4px 10px rgba(0, 100, 210, 0.1);
-            transition: transform 0.3s; display: flex; align-items: center; justify-content: center; overflow: hidden;
-            border: 2px solid #f1f5f9; flex-shrink: 0;
+            width: 54px; height: 54px; border-radius: 50%; background: white; padding: 2px; box-shadow: 0 4px 10px rgba(0, 100, 210, 0.1);
+            display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid #f1f5f9; flex-shrink: 0;
         }
-        .logo-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .logo-container:hover { transform: scale(1.1) rotate(5deg); }
+        .logo-container img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+        .agenda-card { border-top: 6px solid #e2e8f0; transition: all 0.3s ease; }
+        .agenda-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); }
+
+        .snapshot-card { border-radius: 1.5rem; transition: all 0.3s; }
+        .snapshot-card:hover { transform: scale(1.02); }
 
         .stat-ring {
-            width: 80px; height: 80px; border-radius: 50%; background: conic-gradient(var(--ebay-green) var(--p), #e2e8f0 0);
+            width: 70px; height: 70px; border-radius: 50%; background: conic-gradient(var(--ebay-green) var(--p), #334155 0);
             display: flex; align-items: center; justify-content: center; position: relative;
         }
-        .stat-ring::after { content: ''; width: 64px; height: 64px; background: white; border-radius: 50%; position: absolute; }
-        .stat-ring span { position: relative; z-index: 1; font-weight: 900; color: #1e293b; }
+        .stat-ring::after { content: ''; width: 56px; height: 56px; background: inherit; filter: brightness(0.85); border-radius: 50%; position: absolute; }
+        .stat-ring span { position: relative; z-index: 1; font-weight: 900; color: white; font-size: 0.8rem; }
 
-        .snapshot-card { background: white; border-radius: 1.5rem; border: 1px solid #e2e8f0; transition: all 0.3s; height: 100%; }
-        .snapshot-card:hover { transform: scale(1.02); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); }
-
-        .agenda-item { border-left: 4px solid #e2e8f0; padding-left: 1.25rem; transition: border-color 0.3s; margin-bottom: 1.5rem; }
-        .agenda-item:hover { border-left-color: var(--ebay-blue); }
-
+        .hero-heading { line-height: 1.25; padding: 10px 0; overflow: visible !important; }
+        
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        /* HERO HEADING FIX: overflow visible is key here */
-        .hero-heading {
-            line-height: 1.4;
-            padding: 10px 0;
-            overflow: visible !important;
-        }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Navigation -->
-    <nav class="glass-nav sticky top-0 z-50 px-6 py-4 md:px-12 flex justify-between items-center">
+    <nav class="glass-nav sticky top-0 z-50 px-6 py-3 md:px-12 flex justify-between items-center">
         <div class="flex items-center gap-5">
             <div class="logo-container">
-                <!-- Branding: Real Logo file linked here -->
+                <!-- Branding: Integrated GSR Logo from repository -->
                 <img src="image_3efc88.jpg" alt="GSR Logo" onerror="this.src='https://ui-avatars.com/api/?name=GSR&background=0064d2&color=fff'">
             </div>
-            <div class="hidden md:block">
-                <h1 class="font-black text-xl tracking-tighter text-slate-900 leading-none">Global Service Readiness - Learning Hub</h1>
-                <p class="text-[10px] font-black text-[#0064d2] uppercase tracking-[0.2em] mt-1">Unified Insights & Expertise</p>
+            <div>
+                <h1 class="font-black text-xl tracking-tighter text-slate-900 leading-none">Global Service Readiness</h1>
+                <p class="text-[9px] font-black text-[#0064d2] uppercase tracking-[0.2em] mt-1">Learning Hub</p>
             </div>
         </div>
         
-        <div class="hidden lg:flex gap-10 font-bold text-[11px] text-slate-500 uppercase tracking-widest">
-            <a href="#repository" class="hover:text-[#0064d2] transition">Repository</a>
+        <div class="hidden lg:flex gap-8 font-bold text-[10px] text-slate-400 uppercase tracking-widest">
             <a href="#schedule" class="hover:text-[#0064d2] transition">Schedule</a>
-            <a href="#snapshots" class="hover:text-[#0064d2] transition">2025 Recap</a>
+            <a href="#snapshots" class="hover:text-[#0064d2] transition">2025 Pillars</a>
+            <a href="#repository" class="hover:text-[#0064d2] transition">Repository</a>
             <a href="#insights" class="hover:text-[#0064d2] transition">Insights</a>
         </div>
 
         <div class="flex items-center gap-4">
-            <a href="https://forms.gle/Qs3uDYf8HKgyAfMs9" target="_blank" class="hidden md:flex bg-slate-100 text-slate-700 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-200 transition">
-                Suggest Topic
-            </a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-PzSBp_N8uilT5QSumQi1bzkAR-OHRBcCt-cA7_fq1euv4Q/viewform" target="_blank" class="bg-[#0064d2] text-white px-8 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-blue-700 transition shadow-xl shadow-blue-200 flex items-center gap-3">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-PzSBp_N8uilT5QSumQi1bzkAR-OHRBcCt-cA7_fq1euv4Q/viewform" target="_blank" class="bg-[#0064d2] text-white px-8 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-700 transition shadow-lg shadow-blue-100 flex items-center gap-2">
                 Volunteer <i class="fa-solid fa-microphone text-[10px]"></i>
             </a>
         </div>
@@ -139,9 +109,9 @@
     <main class="max-w-7xl mx-auto px-4 md:px-8 py-10 space-y-24">
         
         <!-- Hero Section -->
-        <section class="hero-mesh rounded-[3rem] p-10 md:p-16 border border-slate-200 flex flex-col lg:flex-row items-center gap-16 relative overflow-hidden shadow-2xl">
+        <section class="rounded-[3rem] p-10 md:p-16 border border-slate-200 flex flex-col lg:flex-row items-center gap-16 relative overflow-hidden shadow-2xl bg-white hero-mesh">
             <div class="flex-1 space-y-8 py-4 text-center lg:text-left">
-                <div class="inline-flex items-center gap-3 bg-white/80 backdrop-blur px-5 py-2 rounded-full border border-blue-100 shadow-sm">
+                <div class="inline-flex items-center gap-3 bg-blue-50 px-5 py-2 rounded-full border border-blue-100">
                     <span class="w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
                     <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest">2026 Engagement Portal</span>
                 </div>
@@ -151,317 +121,261 @@
                     <span class="ebay-gradient-text italic font-medium">Learning Hub</span>
                 </h2>
                 
-                <p class="text-slate-600 text-xl md:text-2xl leading-relaxed max-w-2xl font-medium mx-auto lg:mx-0">
-                    The central repository for Service Readiness learning session recordings, resources / decks, and our global monthly delivery schedule.
+                <p class="text-slate-600 text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+                    The central repository for Service Readiness learning recordings, technical resources, and our rolling global schedule.
                 </p>
                 
                 <div class="flex flex-wrap justify-center lg:justify-start gap-5 pt-6">
-                    <a href="#repository" class="bg-[#0064d2] text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-105 hover:shadow-2xl transition-all flex items-center gap-4">
-                        Enter Repository <i class="fa-solid fa-folder-open"></i>
-                    </a>
-                    <a href="https://forms.gle/Qs3uDYf8HKgyAfMs9" target="_blank" class="bg-white border-2 border-slate-200 text-slate-900 px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center gap-4">
-                        Suggest Topic <i class="fa-solid fa-lightbulb"></i>
-                    </a>
+                    <a href="#repository" class="bg-[#0064d2] text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-105 transition-all">Enter Repository</a>
+                    <a href="https://forms.gle/Qs3uDYf8HKgyAfMs9" target="_blank" class="bg-white border-2 border-slate-200 text-slate-900 px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-slate-50 transition-all">Suggest Topic</a>
                 </div>
             </div>
 
-            <!-- Spotlight Card -->
+            <!-- Next Live Agenda Spotlight -->
             <div class="w-full lg:w-[420px] bg-white rounded-[2.5rem] p-10 shadow-2xl border border-slate-100 relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1.5 bg-[#0064d2]"></div>
-                <div class="flex justify-between items-center mb-8 pb-4 border-b border-slate-50">
-                    <div>
-                        <p class="text-[10px] font-black text-[#0064d2] uppercase tracking-[0.2em]">Next Live Session</p>
-                        <p class="text-xs font-bold text-slate-400 mt-1">Host: Emma Dolan</p>
-                    </div>
-                    <span class="text-[10px] font-bold text-white bg-[#0064d2] px-3 py-1 rounded-full animate-pulse uppercase">Feb 27</span>
-                </div>
+                <p class="text-[10px] font-black text-[#0064d2] uppercase tracking-[0.2em] mb-8">Next Live Agenda</p>
                 
-                <div class="space-y-4">
-                    <div class="agenda-item">
+                <div class="space-y-6">
+                    <div class="border-l-4 border-blue-500 pl-4">
                         <h4 class="font-bold text-slate-900 text-sm">Dan Todd</h4>
-                        <p class="text-[9px] font-black text-blue-500 uppercase tracking-wider mt-0.5 mb-1 leading-tight">(Senior Manager GCX Research & Innovation)</p>
-                        <p class="text-xs text-slate-500 font-medium leading-relaxed">GitHub + AI Usage Discussion: Leading as GSR.</p>
+                        <p class="text-[9px] font-black text-blue-500 uppercase tracking-wider mt-1 mb-1 leading-tight">Senior Manager GCX Research & Innovation</p>
+                        <p class="text-[11px] text-slate-500">GitHub + AI Leadership Discussion.</p>
                     </div>
-
-                    <div class="agenda-item">
+                    <div class="border-l-4 border-slate-200 pl-4">
                         <h4 class="font-bold text-slate-900 text-sm">Richard Hennessey</h4>
-                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-wider mt-0.5 mb-1 leading-tight">(GSR Strategy & Operations)</p>
-                        <p class="text-xs text-slate-500 font-medium leading-relaxed">Low Complexity SOP Overview & Feedback Loop.</p>
+                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-wider mt-1 mb-1">GSR Strategy & Operations</p>
+                        <p class="text-[11px] text-slate-500">Low Complexity SOP Overview.</p>
                     </div>
-
-                    <div class="agenda-item">
-                        <h4 class="font-bold text-slate-900 text-sm">Belen Delgado</h4>
-                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-wider mt-0.5 mb-1 leading-tight">(GSR Mentoring Lead)</p>
-                        <p class="text-xs text-slate-500 font-medium leading-relaxed">GSR Mentoring Plan Launch: Building our Future.</p>
-                    </div>
+                </div>
+                <div class="mt-10 pt-6 border-t border-slate-50 flex justify-between items-center">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase">Host: Emma Dolan</span>
+                    <span class="text-[10px] font-black text-white bg-[#0064d2] px-3 py-1 rounded-full uppercase tracking-tighter">Feb 27</span>
                 </div>
             </div>
         </section>
 
-        <!-- 2025 Knowledge Snapshot -->
+        <!-- Delivery Schedule (Rolling 3 Months) -->
+        <section id="schedule" class="space-y-10">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-6 border-b border-slate-200 pb-6">
+                <div class="space-y-2">
+                    <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Rolling Delivery Schedule</h2>
+                    <p class="text-slate-500 font-medium italic">Our forward-looking roadmap for the upcoming global syncs.</p>
+                </div>
+            </div>
+            <div id="upcomingGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+        </section>
+
+        <!-- 2025 Pillar Snapshot -->
         <section id="snapshots" class="space-y-12">
             <div class="text-center space-y-4 max-w-3xl mx-auto">
-                <h2 class="text-4xl font-black text-slate-900 uppercase tracking-tighter">2025 Knowledge Snapshot</h2>
-                <p class="text-slate-500 font-medium text-lg italic">"A look back at the core pillars and experts who shaped our learning in 2025."</p>
+                <h2 class="text-4xl font-black text-slate-900 uppercase tracking-tighter">2025 Pillar Snapshot</h2>
+                <p class="text-slate-500 font-medium text-lg italic">"A look back at the core domains and experts that shaped our 2025 learning roadmap."</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-                <!-- Comms Pillar -->
-                <div class="snapshot-card p-10 border-t-8 border-[#e53238]">
+                <div class="snapshot-card bg-white p-10 border-t-8 border-[#e53238] shadow-xl">
                     <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-[#e53238]">
-                            <i class="fa-solid fa-bullhorn text-xl"></i>
-                        </div>
+                        <div class="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-[#e53238]"><i class="fa-solid fa-bullhorn text-xl"></i></div>
                         <h4 class="font-black text-sm uppercase tracking-widest text-[#e53238]">Communications & Change</h4>
                     </div>
                     <ul class="space-y-4 text-xs font-bold text-slate-600">
-                        <li class="flex items-start gap-2">• Change Impact Assessments <span class="text-slate-400">(Emma)</span></li>
-                        <li class="flex items-start gap-2">• New Change Calendar <span class="text-slate-400">(Richard)</span></li>
-                        <li class="flex items-start gap-2">• Prosci Change Mgmt <span class="text-slate-400">(Lee & Karen)</span></li>
-                        <li class="flex items-start gap-2">• UAT Implementation <span class="text-slate-400">(Jen)</span></li>
+                        <li>• Change Impact Assessments <span class="text-slate-400">(Emma)</span></li>
+                        <li>• New Change Calendar <span class="text-slate-400">(Richard)</span></li>
+                        <li>• Prosci Change Mgmt <span class="text-slate-400">(Lee & Karen)</span></li>
+                        <li>• UAT Implementation <span class="text-slate-400">(Jen)</span></li>
                     </ul>
                 </div>
-
-                <!-- Support Pillar -->
-                <div class="snapshot-card p-10 border-t-8 border-[#86b817]">
+                <div class="snapshot-card bg-white p-10 border-t-8 border-[#86b817] shadow-xl">
                     <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-[#86b817]">
-                            <i class="fa-solid fa-users-gear text-xl"></i>
-                        </div>
+                        <div class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-[#86b817]"><i class="fa-solid fa-users-gear text-xl"></i></div>
                         <h4 class="font-black text-sm uppercase tracking-widest text-[#86b817]">Support & Ops</h4>
                     </div>
                     <ul class="space-y-4 text-xs font-bold text-slate-600">
-                        <li class="flex items-start gap-2">• CARE Team Overview <span class="text-slate-400">(Tsveti)</span></li>
-                        <li class="flex items-start gap-2">• Service Desktop Vision <span class="text-slate-400">(Justin)</span></li>
-                        <li class="flex items-start gap-2">• GSD Priorities Pipeline <span class="text-slate-400">(Sean)</span></li>
-                        <li class="flex items-start gap-2">• CTP & SpeedPAK <span class="text-slate-400">(Martyn/Sarah)</span></li>
+                        <li>• CARE Team Overview <span class="text-slate-400">(Tsveti)</span></li>
+                        <li>• Service Desktop Vision <span class="text-slate-400">(Justin)</span></li>
+                        <li>• GSD Priorities Pipeline <span class="text-slate-400">(Sean)</span></li>
+                        <li>• CTP & SpeedPAK <span class="text-slate-400">(Martyn/Sarah)</span></li>
                     </ul>
                 </div>
-
-                <!-- Tech Pillar -->
-                <div class="snapshot-card p-10 border-t-8 border-[#0064d2]">
+                <div class="snapshot-card bg-white p-10 border-t-8 border-[#0064d2] shadow-xl">
                     <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-[#0064d2]">
-                            <i class="fa-solid fa-microchip text-xl"></i>
-                        </div>
+                        <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-[#0064d2]"><i class="fa-solid fa-microchip text-xl"></i></div>
                         <h4 class="font-black text-sm uppercase tracking-widest text-[#0064d2]">Data & Tech</h4>
                     </div>
                     <ul class="space-y-4 text-xs font-bold text-slate-600">
-                        <li class="flex items-start gap-2">• AI Use Cases <span class="text-slate-400">(David/Daniel)</span></li>
-                        <li class="flex items-start gap-2">• AI Google Site Dev <span class="text-slate-400">(Danny)</span></li>
-                        <li class="flex items-start gap-2">• AI Taskforce Progression <span class="text-slate-400">(Justin)</span></li>
-                        <li class="flex items-start gap-2">• Call Miner Overview <span class="text-slate-400">(Scott)</span></li>
+                        <li>• AI Use Cases <span class="text-slate-400">(David/Daniel)</span></li>
+                        <li>• AI Google Site Dev <span class="text-slate-400">(Danny)</span></li>
+                        <li>• AI Taskforce Progression <span class="text-slate-400">(Justin)</span></li>
+                        <li>• Call Miner Overview <span class="text-slate-400">(Scott)</span></li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Engagement Wall -->
-        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="sticky-note recipe-yellow p-8 rounded-3xl shadow-xl flex flex-col h-full">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-10 h-10 bg-[#f5af02] rounded-xl flex items-center justify-center text-white shadow-lg">
-                        <i class="fa-solid fa-utensils"></i>
-                    </div>
-                    <h4 class="font-black text-xs uppercase tracking-widest text-slate-800">Engagement Wall</h4>
-                </div>
-                <p class="text-sm italic font-semibold text-slate-700 leading-relaxed mb-8">
-                    "Marianna's Lasagna recipe shared during the January session is now available for download!"
-                </p>
-                <div class="mt-auto">
-                    <a href="#" class="inline-flex items-center gap-2 text-[10px] font-black text-[#0064d2] uppercase tracking-widest hover:gap-4 transition-all">
-                        View Recipe Details <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="sticky-note joke-blue p-8 rounded-3xl shadow-xl">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-10 h-10 bg-[#0064d2] rounded-xl flex items-center justify-center text-white shadow-lg">
-                        <i class="fa-solid fa-face-laugh-beam"></i>
-                    </div>
-                    <h4 class="font-black text-xs uppercase tracking-widest text-slate-800">Dad Joke Zone</h4>
-                </div>
-                <p class="text-sm font-medium text-slate-700 italic leading-relaxed">
-                    "Why did the JIRA ticket cross the road? To get assigned to someone else!"
-                </p>
-                <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-6 text-right">&mdash; Shared by Tony</p>
-            </div>
-
-            <div class="bg-white p-8 rounded-3xl shadow-sm border-2 border-slate-50 flex flex-col justify-center text-center">
-                <p class="text-[10px] font-black text-[#86b817] uppercase tracking-[0.3em] mb-4">Sentiment Pulse</p>
-                <p class="text-lg font-bold text-slate-800 leading-tight">"Overall sentiment in 2024–2025 was strongly positive; sessions are found to be highly useful and engaging."</p>
-            </div>
-        </section>
-
-        <!-- Delivery Schedule -->
-        <section id="schedule" class="space-y-10">
-            <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Delivery Schedule</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-[2rem] border-2 border-blue-50 card-shadow flex gap-6 items-center">
-                    <div class="bg-blue-600 text-white w-20 h-20 rounded-2xl flex flex-col items-center justify-center shadow-lg">
-                        <span class="text-[10px] font-black uppercase">Feb</span>
-                        <span class="text-3xl font-black leading-none">27</span>
-                    </div>
-                    <div>
-                        <h4 class="font-black text-slate-900 leading-tight">Feb Session</h4>
-                        <p class="text-xs text-slate-400 font-bold uppercase mt-1">Emma Dolan (Host)</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-[2rem] border-2 border-emerald-50 card-shadow flex gap-6 items-center">
-                    <div class="bg-[#86b817] text-white w-20 h-20 rounded-2xl flex flex-col items-center justify-center shadow-lg">
-                        <span class="text-[10px] font-black uppercase">Mar</span>
-                        <span class="text-3xl font-black leading-none">27</span>
-                    </div>
-                    <div>
-                        <h4 class="font-black text-slate-900 leading-tight italic text-nowrap">Open Slot</h4>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-PzSBp_N8uilT5QSumQi1bzkAR-OHRBcCt-cA7_fq1euv4Q/viewform" target="_blank" class="text-[9px] font-black text-[#86b817] uppercase tracking-widest mt-1 hover:underline animate-pulse">Volunteer →</a>
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-[2rem] border-2 border-slate-50 card-shadow flex gap-6 items-center opacity-70">
-                    <div class="bg-slate-200 text-slate-400 w-20 h-20 rounded-2xl flex flex-col items-center justify-center">
-                        <span class="text-[10px] font-black uppercase">Apr</span>
-                        <span class="text-3xl font-black leading-none">24</span>
-                    </div>
-                    <div>
-                        <h4 class="font-black text-slate-900 leading-tight italic">April Sync</h4>
-                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Available</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Repository -->
+        <!-- Topic Repository (Pillar View) -->
         <section id="repository" class="space-y-12">
             <div class="flex flex-col md:flex-row justify-between items-center gap-10">
                 <div class="space-y-2">
-                    <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Learning Repository</h2>
-                    <div class="flex gap-2 pt-2 overflow-x-auto no-scrollbar">
-                        <button onclick="filterQuarter('Q1')" id="tab-Q1" class="quarter-tab active px-6 py-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-all">Q1</button>
-                        <button onclick="filterQuarter('Q2')" id="tab-Q2" class="quarter-tab px-6 py-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-all">Q2</button>
-                        <button onclick="filterQuarter('Q3')" id="tab-Q3" class="quarter-tab px-6 py-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-all">Q3</button>
-                        <button onclick="filterQuarter('Q4')" id="tab-Q4" class="quarter-tab px-6 py-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-all">Q4</button>
+                    <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Resource Repository</h2>
+                    <div class="flex gap-2 pt-2 overflow-x-auto no-scrollbar" id="pillarNav">
+                        <button onclick="filterPillar('All')" class="pillar-tab active px-6 py-2 text-[10px] font-black uppercase tracking-widest border border-slate-200 rounded-full whitespace-nowrap">All Topics</button>
+                        <button onclick="filterPillar('Communications')" class="pillar-tab px-6 py-2 text-[10px] font-black uppercase tracking-widest border border-slate-200 rounded-full whitespace-nowrap">Communications</button>
+                        <button onclick="filterPillar('Technology')" class="pillar-tab px-6 py-2 text-[10px] font-black uppercase tracking-widest border border-slate-200 rounded-full whitespace-nowrap">Technology</button>
+                        <button onclick="filterPillar('Operations')" class="pillar-tab px-6 py-2 text-[10px] font-black uppercase tracking-widest border border-slate-200 rounded-full whitespace-nowrap">Operations</button>
                     </div>
                 </div>
                 <div class="relative w-full md:w-96">
                     <i class="fa-solid fa-magnifying-glass absolute left-6 top-1/2 -translate-y-1/2 text-slate-300"></i>
-                    <input type="text" id="searchInput" placeholder="Search resources..." class="w-full pl-16 pr-8 py-5 rounded-[2.5rem] border-2 border-slate-100 focus:outline-none focus:border-blue-500 transition-all shadow-xl font-bold text-slate-700">
+                    <input type="text" id="searchInput" placeholder="Search sessions, presenters..." class="w-full pl-16 pr-8 py-5 rounded-[2.5rem] border-2 border-slate-100 focus:outline-none focus:border-blue-500 shadow-xl font-bold text-slate-700 transition-all">
                 </div>
             </div>
             <div id="repoGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"></div>
         </section>
 
-        <!-- Insights -->
-        <section id="insights" class="grid grid-cols-1 lg:grid-cols-2 gap-10 pt-10 pb-20 border-t border-slate-100">
-            <div class="bg-white p-12 rounded-[3rem] border border-slate-100 shadow-xl flex flex-col items-center justify-center text-center min-h-[450px]">
-                <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mb-12 text-nowrap">Feedback WordCloud (2024–2026)</h3>
-                <div class="flex flex-wrap justify-center gap-x-8 gap-y-6">
-                    <span class="text-6xl font-black text-[#0064d2]">UAT Tips</span>
-                    <span class="text-4xl font-bold text-[#e53238]">AI Learning</span>
-                    <span class="text-7xl font-black text-[#86b817]">APAC Insights</span>
-                    <span class="text-2xl font-medium text-slate-400 uppercase tracking-widest">PM Practices</span>
-                    <span class="text-5xl font-black text-[#f5af02]">KYC Process</span>
-                    <span class="text-3xl font-bold text-slate-400">Toolkit Refresher</span>
-                </div>
-            </div>
-
-            <div class="bg-slate-900 p-12 rounded-[3rem] shadow-2xl text-white space-y-10">
-                <div class="flex justify-between items-center border-b border-white/10 pb-6">
-                    <h3 class="text-xl font-black uppercase tracking-tighter">Engagement Insights</h3>
-                    <i class="fa-solid fa-chart-line text-[#86b817] text-2xl"></i>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div class="flex items-center gap-6">
-                        <div class="stat-ring" style="--p: 94%"><span>94%</span></div>
-                        <div>
-                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Confidence</p>
-                            <p class="text-xs font-medium text-slate-300">Ready for 2026</p>
+        <!-- Merged Dashboard: Recap & Insights -->
+        <section id="insights" class="bg-white rounded-[3.5rem] shadow-2xl overflow-hidden border border-slate-100">
+            <div class="grid grid-cols-1 lg:grid-cols-2 divide-x divide-slate-100">
+                <!-- Recap & Community Side -->
+                <div class="p-12 md:p-16 space-y-12">
+                    <div class="space-y-4">
+                        <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Community Pulse</h2>
+                        <div class="flex flex-wrap gap-x-8 gap-y-4 justify-center py-6">
+                            <span class="text-6xl font-black text-[#0064d2] opacity-80">UAT</span>
+                            <span class="text-4xl font-bold text-[#e53238] opacity-80">AI</span>
+                            <span class="text-5xl font-black text-[#86b817] opacity-80">Insights</span>
+                            <span class="text-2xl font-medium text-slate-400 uppercase tracking-widest">PMO</span>
+                            <span class="text-4xl font-black text-[#f5af02] opacity-80">SOP</span>
                         </div>
                     </div>
-                    <div class="flex items-center gap-6">
-                        <div class="stat-ring" style="--p: 96%; --ebay-green: #f5af02"><span>4.8</span></div>
-                        <div>
-                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Rating</p>
-                            <p class="text-xs font-medium text-slate-300">Avg Satisfaction</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-slate-100">
+                        <div class="bg-[#fffde7] p-6 rounded-2xl border-l-4 border-[#f5af02]">
+                            <h5 class="text-[10px] font-black uppercase text-[#f5af02] mb-2">Marianna's Kitchen</h5>
+                            <p class="text-xs font-bold italic text-slate-600 mb-2">"Lasagna alla Bolognese recipe is now live."</p>
+                            <a href="#" class="text-[10px] font-black text-[#0064d2] uppercase tracking-widest underline">Download</a>
+                        </div>
+                        <div class="bg-[#e3f2fd] p-6 rounded-2xl border-l-4 border-[#0064d2]">
+                            <h5 class="text-[10px] font-black uppercase text-[#0064d2] mb-2">The Dad Joke Zone</h5>
+                            <p class="text-xs font-bold italic text-slate-600">"Why was the JIRA ticket so sad? It had too many issues!"</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
-                    <p class="text-xs font-bold text-[#86b817] uppercase mb-3">Top Team Requests:</p>
-                    <ul class="text-[11px] text-slate-300 space-y-3 font-medium">
-                        <li>• Clear do's/don'ts for the GSE Change Calendar.</li>
-                        <li>• Cross-department visibility (Studio, PMO, Data).</li>
-                        <li>• Practical AI integration for daily tasks.</li>
-                    </ul>
+                <!-- Insights & Data Side -->
+                <div class="bg-slate-900 p-12 md:p-16 space-y-12 text-white">
+                    <div class="flex justify-between items-center border-b border-white/10 pb-6">
+                        <h3 class="text-xl font-black uppercase tracking-tighter">Engagement Insights</h3>
+                        <i class="fa-solid fa-chart-line text-[#86b817] text-2xl"></i>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="flex items-center gap-6">
+                            <div class="stat-ring" style="--p: 94%"><span>94%</span></div>
+                            <div>
+                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Confidence</p>
+                                <p class="text-xs font-medium text-slate-300">Ready for 2026</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="stat-ring" style="--p: 96%; --ebay-green: #f5af02"><span>4.8</span></div>
+                            <div>
+                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Satisfaction</p>
+                                <p class="text-xs font-medium text-slate-300">Average Rating</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+                        <p class="text-xs font-bold text-[#86b817] uppercase mb-3">Priority Team Requests:</p>
+                        <ul class="text-[11px] text-slate-300 space-y-3 font-medium">
+                            <li>• Clear do's/don'ts for the GSE Change Calendar.</li>
+                            <li>• Cross-department visibility (Hear from PMO, Data).</li>
+                            <li>• Practical AI integration for daily tasks.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-slate-950 py-20 text-center">
+    <footer class="bg-slate-950 py-20 text-center border-t border-white/5">
         <div class="flex justify-center gap-2 mb-8">
             <span class="w-1.5 h-1.5 bg-[#0064d2] rounded-full"></span>
             <span class="w-1.5 h-1.5 bg-[#e53238] rounded-full"></span>
             <span class="w-1.5 h-1.5 bg-[#f5af02] rounded-full"></span>
             <span class="w-1.5 h-1.5 bg-[#86b817] rounded-full"></span>
         </div>
-        <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.5em]">Global Service Readiness &bull; Learning Hub v8.2</p>
+        <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.5em]">Global Service Readiness &bull; Learning Hub v10.0</p>
     </footer>
 
     <script>
-        let data = { sessions: [] };
-        let activeQuarter = 'Q1';
+        let data = { sessions: [], upcoming: [] };
+        let activePillar = 'All';
 
         async function loadData() {
             try {
                 const response = await fetch('./data.json?t=' + Date.now());
                 if (response.ok) { data = await response.json(); }
-            } catch (e) { console.warn("Fetch failed, check data.json file."); }
+            } catch (e) { 
+                console.warn("Fetch failed, check data.json file."); 
+                // Default fallback to ensure something displays if repo is missing json
+                data = { sessions: [], upcoming: [] };
+            }
+            renderSchedule();
             renderRepository();
         }
 
-        function filterQuarter(q) {
-            activeQuarter = q;
-            document.querySelectorAll('.quarter-tab').forEach(t => t.classList.remove('active'));
-            document.getElementById('tab-' + q).classList.add('active');
+        function filterPillar(pillar) {
+            activePillar = pillar;
+            document.querySelectorAll('.pillar-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
             renderRepository();
+        }
+
+        function renderSchedule() {
+            const grid = document.getElementById('upcomingGrid');
+            if (!data.upcoming || data.upcoming.length === 0) return;
+            grid.innerHTML = data.upcoming.map(u => `
+                <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-100 flex flex-col h-full agenda-card ${u.status === 'Tentative' ? 'opacity-60' : ''}">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="bg-slate-900 text-white px-4 py-2 rounded-xl text-center">
+                            <span class="block text-[10px] font-black uppercase">${u.month}</span>
+                            <span class="block text-2xl font-black leading-none">${u.day}</span>
+                        </div>
+                        <span class="text-[9px] font-black uppercase px-3 py-1 rounded-full ${u.status === 'Confirmed' ? 'bg-green-50 text-green-600' : 'bg-slate-100 text-slate-400'}">${u.status}</span>
+                    </div>
+                    <h4 class="text-lg font-black text-slate-900 mb-2 leading-tight">${u.topic}</h4>
+                    <p class="text-[11px] font-bold text-[#0064d2] uppercase mb-4 tracking-wider">${u.speakers}</p>
+                    <div class="mt-auto pt-6 border-t border-slate-50 text-[10px] font-black text-slate-400 uppercase">Host: ${u.host}</div>
+                </div>
+            `).join('');
         }
 
         function renderRepository() {
             const grid = document.getElementById('repoGrid');
             const search = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = data.sessions.filter(s => s.quarter === activeQuarter && (s.title.toLowerCase().includes(search) || s.speaker.toLowerCase().includes(search)));
+            const filtered = data.sessions.filter(s => (activePillar === 'All' || s.pillar === activePillar) && (s.title.toLowerCase().includes(search) || s.speaker.toLowerCase().includes(search)));
             
             if (filtered.length === 0) {
-                grid.innerHTML = `<div class="col-span-full py-20 text-center font-bold text-slate-300 italic">No sessions logged for ${activeQuarter} yet.</div>`;
+                grid.innerHTML = `<div class="col-span-full py-20 text-center font-bold text-slate-300 italic">No resources matched the filter in this pillar.</div>`;
                 return;
             }
 
-            const glows = ['card-glow-blue', 'card-glow-red', 'card-glow-yellow', 'card-glow-green'];
-            
-            grid.innerHTML = filtered.map((s, i) => `
-                <div class="premium-card p-10 flex flex-col h-full card-shadow session-card border-2 border-slate-50 ${glows[i % 4]}">
+            grid.innerHTML = filtered.map(s => `
+                <div class="premium-card p-10 flex flex-col h-full bg-white shadow-xl rounded-[2.5rem] border border-slate-100 transition-all hover:-translate-y-2">
                     <div class="flex justify-between items-start mb-8">
                         <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">${s.month} ${s.year}</span>
+                        <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">${s.pillar}</span>
                     </div>
-                    <h3 class="text-2xl font-black text-slate-900 mb-4 leading-tight">${s.title}</h3>
-                    <div class="mb-8"><p class="text-slate-500 text-sm font-medium leading-relaxed italic border-l-4 border-slate-100 pl-4">${s.summary}</p></div>
+                    <h3 class="text-xl font-black text-slate-900 mb-4 leading-tight">${s.title}</h3>
+                    <p class="text-slate-500 text-xs font-medium leading-relaxed mb-10 italic border-l-2 border-slate-100 pl-4">${s.summary}</p>
                     <div class="mt-auto pt-8 border-t border-slate-50">
                         <div class="flex items-center gap-4 mb-8">
-                            <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center font-black text-[#0064d2] text-xs">${s.speaker ? s.speaker.charAt(0) : '?'}</div>
-                            <div class="overflow-hidden">
-                                <span class="block font-black text-slate-800 text-sm truncate">${s.speaker}</span>
-                                <span class="block text-[10px] font-bold text-slate-400 uppercase">${s.quarter} session</span>
-                            </div>
+                            <div class="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center font-black text-[#0064d2] text-xs">${s.speaker.charAt(0)}</div>
+                            <div class="overflow-hidden"><span class="block font-black text-slate-800 text-[11px] truncate">${s.speaker}</span></div>
                         </div>
                         <div class="grid grid-cols-2 gap-4">
-                            <a href="${s.recording}" target="_blank" class="flex items-center justify-center gap-2 bg-slate-900 py-4 rounded-2xl text-[10px] font-black text-white hover:bg-[#0064d2] transition shadow-lg uppercase tracking-widest">Recording</a>
-                            <a href="${s.deck}" target="_blank" class="flex items-center justify-center gap-2 bg-white border-2 border-slate-200 py-4 rounded-2xl text-[10px] font-black text-slate-600 hover:border-[#0064d2] transition uppercase tracking-widest">Deck</a>
+                            <a href="${s.recording}" target="_blank" class="flex items-center justify-center bg-slate-900 text-white py-4 rounded-2xl text-[9px] font-black uppercase hover:bg-blue-600 transition tracking-widest">Recording</a>
+                            <a href="${s.deck}" target="_blank" class="flex items-center justify-center bg-white border border-slate-200 text-slate-600 py-4 rounded-2xl text-[9px] font-black uppercase hover:border-blue-500 transition tracking-widest">Resources</a>
                         </div>
                     </div>
                 </div>`).join('');
