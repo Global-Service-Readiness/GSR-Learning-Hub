@@ -2,138 +2,79 @@
   "sessions": [
     {
       "month": "Feb",
-      "quarter": "Q1",
       "year": "2026",
+      "category": "Technology",
       "title": "AI Usage Leadership & SOP Excellence",
-      "speaker": "Dan Todd (Senior Manager GCX Research & Innovation), Richard Hennessey (GSR Strategy), Belen Delgado (GSR Mentoring)",
-      "summary": "February session hosted by Emma Dolan. Discussion on AI Usage leadership as GSR leaders, review of Low Complexity SOPs, and the launch of the GSR Mentoring Plan.",
+      "speaker": "Dan Todd, Richard Hennessey, Belen Delgado",
+      "summary": "Leadership in AI usage, review of Low Complexity SOPs, and the launch of the GSR Mentoring Plan.",
       "recording": "https://drive.google.com/drive/folders/1Pivc2jr038QVymG6xY4OKjydOoNImG1b",
       "deck": "https://drive.google.com/drive/folders/1Pivc2jr038QVymG6xY4OKjydOoNImG1b"
     },
     {
       "month": "Jan",
-      "quarter": "Q1",
       "year": "2026",
+      "category": "Operations",
       "title": "2026 Initiatives & JIRA Infrastructure",
-      "speaker": "Lee Reddin (Strategic Initiatives) & Marco Tramacere (Updates to JIRA)",
-      "summary": "January session hosted by Annina Krawzik. Strategic GCX Initiatives for 2026, major JIRA infrastructure updates, and the 2025 retrospect survey results.",
+      "speaker": "Lee Reddin & Marco Tramacere",
+      "summary": "Strategic GCX Initiatives for 2026 and major JIRA infrastructure updates.",
       "recording": "https://drive.google.com/drive/folders/1S2MzD-2oMY4Q1siDoOixjxtS_Nl0Jg1T",
       "deck": "https://drive.google.com/drive/folders/1S2MzD-2oMY4Q1siDoOixjxtS_Nl0Jg1T"
     },
     {
       "month": "Dec",
-      "quarter": "Q4",
       "year": "2025",
-      "title": "2025 Recap & AI Taskforce Progress",
-      "speaker": "Justin (AI Taskforce) & GSR Tiger Team",
-      "summary": "Year-end review of AI Taskforce progression, Google Site developments, and a celebration of 2025 readiness milestones.",
+      "category": "Technology",
+      "title": "AI Taskforce Progress",
+      "speaker": "Justin & Tiger Team",
+      "summary": "Year-end review of AI Taskforce progression and Google Site developments.",
       "recording": "https://drive.google.com/drive/folders/1i_uHaf6h84WtCw4kCnstc5BRPM2zo__P",
       "deck": "https://drive.google.com/drive/folders/1i_uHaf6h84WtCw4kCnstc5BRPM2zo__P"
     },
     {
       "month": "Oct",
-      "quarter": "Q4",
       "year": "2025",
-      "title": "Data, Tools & Technology Pillar",
-      "speaker": "David, Thomas, Daniel (AI Use Cases) & Scott (Call Miner)",
-      "summary": "Deep dive into AI Use Cases, Call Miner team overview, and Touchtone experiments for data-driven readiness.",
+      "category": "Technology",
+      "title": "Data & Tools Pillar",
+      "speaker": "David, Thomas, Daniel & Scott",
+      "summary": "AI Use Cases and Call Miner team overview.",
       "recording": "https://drive.google.com/drive/folders/1NvvrRuvszpTokvmAE5KZjT6M4jHdfu9H",
       "deck": "https://drive.google.com/drive/folders/1NvvrRuvszpTokvmAE5KZjT6M4jHdfu9H"
     },
     {
-      "month": "Aug",
-      "quarter": "Q3",
-      "year": "2025",
-      "title": "Customer, Support & Operations Pillar",
-      "speaker": "Justin (Service Desktop), Martyn (CTP), Sarah Sun (SpeedPAK)",
-      "summary": "Overview of the CARE team, Service Desktop future vision, and updates on SpeedPAK and CTP project pipelines.",
-      "recording": "https://drive.google.com/drive/folders/1LNPognPKp_s4211HkmfdYCgH7ivihhnc",
-      "deck": "https://drive.google.com/drive/folders/1LNPognPKp_s4211HkmfdYCgH7ivihhnc"
-    },
-    {
-      "month": "July",
-      "quarter": "Q3",
-      "year": "2025",
-      "title": "Regional Focus & Community Impact",
-      "speaker": "Ash (Rescues/Shelters & Benevity)",
-      "summary": "Focus on APAC regional customer focus and the launch of our Community & Social Impact initiatives.",
-      "recording": "https://drive.google.com/drive/folders/13j2rQyoWFsyFx3ZMAXHEPtiQDW3ed9tO",
-      "deck": "https://drive.google.com/drive/folders/13j2rQyoWFsyFx3ZMAXHEPtiQDW3ed9tO"
-    },
-    {
       "month": "June",
-      "quarter": "Q2",
       "year": "2025",
+      "category": "Communications",
       "title": "Communications & Change Pillar",
-      "speaker": "Lee & Karen (Prosci), Jen (UAT), Richard (Change Calendar)",
-      "summary": "Prosci Change Management methodologies, UAT best practices from Studio, and the rollout of the New Change Calendar.",
+      "speaker": "Lee, Karen, Jen, Richard",
+      "summary": "Prosci Change Management and UAT best practices.",
       "recording": "https://drive.google.com/drive/folders/1lzTN8OdNS3uRWIROmkKVnc6IXt_fm9h_",
       "deck": "https://drive.google.com/drive/folders/1lzTN8OdNS3uRWIROmkKVnc6IXt_fm9h_"
-    },
+    }
+  ],
+  "upcoming": [
     {
-      "month": "May",
-      "quarter": "Q2",
-      "year": "2025",
-      "title": "Toolkit Refreshers & Comms Matrix",
-      "speaker": "Sean (Comms Portal) & Kata (External DLs)",
-      "summary": "Deep dive into toolkit refreshers, including the comms matrix, templates, and urgent comms reminders.",
-      "recording": "https://drive.google.com/drive/folders/1-LTKAO1dVsOb6YtWeRY2fYEgwJxXrD0m",
-      "deck": "https://drive.google.com/drive/folders/1-LTKAO1dVsOb6YtWeRY2fYEgwJxXrD0m"
-    },
-    {
-      "month": "April",
-      "quarter": "Q2",
-      "year": "2025",
-      "title": "GSE Change Calendar & Roadmaps",
-      "speaker": "Richard (Change Management) & Nina (GCX BRD)",
-      "summary": "Clarity on do's and don'ts for the Change Calendar and a walk-through of the H1 roadmaps.",
-      "recording": "https://drive.google.com/drive/folders/18GkanqC6WGl_at633p0U61MTW8uHqvvx",
-      "deck": "https://drive.google.com/drive/folders/18GkanqC6WGl_at633p0U61MTW8uHqvvx"
+      "month": "Feb",
+      "day": "27",
+      "host": "Emma Dolan",
+      "topic": "AI Leadership & Mentoring Launch",
+      "speakers": "Dan Todd, Richard H., Belen D.",
+      "status": "Confirmed"
     },
     {
       "month": "Mar",
-      "quarter": "Q1",
-      "year": "2025",
-      "title": "Lessons Learned & Insights Pillar",
-      "speaker": "Danny (Complex Answers), Tony (Rate Fees), Sarah (ICX)",
-      "summary": "Buyer Protection & FaD announcements, Complex Answers from a GSR perspective, and ICX strategy updates.",
-      "recording": "https://drive.google.com/drive/folders/1zXNlb-QulX-aw35oA2ITpxBerSo45pi0",
-      "deck": "https://drive.google.com/drive/folders/1zXNlb-QulX-aw35oA2ITpxBerSo45pi0"
+      "day": "27",
+      "host": "TBC",
+      "topic": "Strategic Roadmap: H1 Focus Areas",
+      "speakers": "Guest Speakers (TBC)",
+      "status": "Tentative"
     },
     {
-      "month": "Feb",
-      "quarter": "Q1",
-      "year": "2025",
-      "title": "Year Ahead: 2025 Strategy",
-      "speaker": "GSR Tiger Team (Planning)",
-      "summary": "Setting the momentum for 2025, reviewing Tiger Team ownership, and interactive engagement activities.",
-      "recording": "https://drive.google.com/drive/folders/1dmAZVJyLyGQxJvLCmuWi-ZY0IWmdwOAi",
-      "deck": "https://drive.google.com/drive/folders/1dmAZVJyLyGQxJvLCmuWi-ZY0IWmdwOAi"
-    },
-    {
-      "month": "Jan",
-      "quarter": "Q1",
-      "year": "2025",
-      "title": "2024 Retrospective & Q1 Launch",
-      "speaker": "GSR Strategy Team",
-      "summary": "Analysis of 2024 feedback, lessons learned from projects, and kicking off the 2025 learning roadmap.",
-      "recording": "https://docs.google.com/presentation/d/1VJQXoCXYIMmRE5I_ERhn7JCqIolGWvai/edit?slide=id.p2#slide=id.p2",
-      "deck": "https://docs.google.com/presentation/d/1VJQXoCXYIMmRE5I_ERhn7JCqIolGWvai/edit?slide=id.p2#slide=id.p2"
+      "month": "Apr",
+      "day": "24",
+      "host": "TBC",
+      "topic": "Operational Excellence & JIRA Deep-Dive",
+      "speakers": "Operations Lead",
+      "status": "Tentative"
     }
-  ],
-  "events": {
-    "2026-02-27": {
-      "title": "Feb Session",
-      "speaker": "Emma Dolan (Host)",
-      "type": "booked"
-    },
-    "2026-03-27": {
-      "title": "March Slot",
-      "type": "available"
-    },
-    "2026-04-24": {
-      "title": "April Slot",
-      "type": "available"
-    }
-  }
+  ]
 }
